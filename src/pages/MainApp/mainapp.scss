@@ -1,0 +1,12 @@
+.main-app-wrapper{
+  flex-direction: column;
+  display: flex;
+  height: 100vh;
+  .content-wrapper{
+    max-width: 950px;
+    // background-color: blueviolet;
+    margin: auto;
+    width: 100%;
+    flex: 1;
+  }
+}

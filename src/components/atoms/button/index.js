@@ -1,15 +1,29 @@
 import React from 'react'
 import Button from '@material-ui/core/Button';
 import "./button.scss"
+import { makeStyles } from '@material-ui/core/styles';
 
-function index({ color, label, ...rest }) {
+const useStyles = makeStyles({
+  root: {
+    // background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+    border: 0,
+    borderRadius: 3,
+    boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+    color: 'white',
+    // height: 48,
+    padding: '0 30px',
+  },
+});
+
+function Index({ label, width, height, background, ...rest }) {
+  const classes = useStyles()
   return (
     <div className="button-wrapper">
-      <Button className="button" variant="contained" color={color} {...rest}>
+      <Button className={classes.root} style={{ width, background, height }} {...rest}>
         {label}
       </Button>
     </div>
   )
 }
 
-export default index
+export default Index

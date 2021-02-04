@@ -1,0 +1,11 @@
+.header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(to right, #00b4db, #0083b0);
+  padding: 10px 20px;
+  .exit-icon{
+    float: right;
+    margin-left: '100px';
+  }
+}

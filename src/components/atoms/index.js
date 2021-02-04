@@ -1,6 +1,6 @@
 import Button from './button'
 import Input from './input'
 import Gap from './gap'
-import Link from './link'
+import Links from './link'
 
-export { Button, Input, Gap, Link }
+export { Button, Input, Gap, Links }
