@@ -8,10 +8,22 @@ function Home() {
     <div className="home-wrapper">
       <Gap height={15} />
       <div className="create-wrapper">
-        <Button label="Create Blog" background={BLUE} height={30} />
+        <Button label="Create Blog" background={BLUE} height={30} borderRadius={3} />
       </div>
+      <Gap height={25} />
       <div className="content-wrapper">
         <BlogItem />
+        <BlogItem />
+        <BlogItem />
+        <BlogItem />
+        <BlogItem />
+        <BlogItem />
+        <BlogItem />
+      </div>
+      <div className="home-pagination">
+        <Button label="Previous" background={BLUE} width="100%" />
+        <Gap width={20} />
+        <Button label="Next" background={BLUE} width="100%" height={30} />
       </div>
     </div>
   )

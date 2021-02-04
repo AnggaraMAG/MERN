@@ -9,6 +9,15 @@
     margin-right: 0;
   }
   .content-wrapper{
-    //
+    // margin-top: 25px;
+    display: flex;
+    flex-wrap: wrap;
+    // margin:100px
+    // justify-content: space-between;
+  }
+  .home-pagination{
+    display: flex;
+    max-width: 240px;
+    margin: auto;
   }
 }

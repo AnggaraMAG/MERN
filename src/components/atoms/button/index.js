@@ -15,14 +15,12 @@ const useStyles = makeStyles({
   },
 });
 
-function Index({ label, width, height, background, ...rest }) {
+function Index({ label, width, height, background, borderRadius, ...rest }) {
   const classes = useStyles()
   return (
-    <div className="button-wrapper">
-      <Button className={classes.root} style={{ width, background, height }} {...rest}>
-        {label}
-      </Button>
-    </div>
+    <Button className={classes.root} style={{ width, background, height, borderRadius }} {...rest}>
+      {label}
+    </Button>
   )
 }
 
