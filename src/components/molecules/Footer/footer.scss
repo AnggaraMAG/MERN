@@ -1,11 +1,15 @@
 .footer-wrapper{
   width: 100%;
-  background: blanchedalmond;
-  height: '100px';
-  margin-bottom: 0;
+  background: linear-gradient(to right, #00b4db, #0083b0);
+  height: 100px;
+  margin-bottom: 0px;
+  margin: 0px;
+  padding: 0;
+  margin-top: 15px;
+
   .item-footer{
     height: '100px';
-    // width: 100%;
-    // background: black;
+    font-weight: bold;
+    color: honeydew;
   }
 }
