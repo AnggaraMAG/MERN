@@ -27,7 +27,9 @@ function MainApp() {
           </Switch>
         </Router>
       </div>
-      <Footer />
+      <div className="footer-wrapper">
+        <Footer />
+      </div>
     </div>
   )
 }

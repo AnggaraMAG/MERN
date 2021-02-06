@@ -1,3 +1,16 @@
+.blog-item:hover{
+  // background-color: yellowgreen;
+  cursor: pointer;
+  .blog-title:hover{
+    color: rgb(85, 82, 82);
+  }
+  .blog-autor-date:hover{
+    color: rgb(46, 39, 39);
+  }
+  .blog-content:hover{
+    color: rgb(85, 82, 82);
+  }
+}
 .blog-item{
   width: calc(30% - 10px);
   border-radius: 8px;
@@ -25,7 +38,6 @@
       color: rgb(85, 82, 82);
     }
     .blog-content{
-     
       float: left;
       margin: 0px;
       margin-top: 10px;
@@ -33,9 +45,6 @@
       font-size: 16px;
       color: black;
     }
-    .blog-content:hover{
-      color: rgb(85, 82, 82);
-      cursor: pointer;
-    }
   }
+
 }

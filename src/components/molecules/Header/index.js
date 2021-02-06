@@ -39,7 +39,7 @@ const Header = () => {
           <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" color="inherit">
+          <Typography className="title-header" variant="h6" color="inherit" onClick={() => history.push('/')}>
             Newspaper
         </Typography>
           <div className={classes.title}>

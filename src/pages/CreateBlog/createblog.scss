@@ -1,0 +1,23 @@
+.blog-wrapper{
+  // background-color: aquamarine;
+  .title-create-wrapper{
+    width: 200px;
+    margin-left: 0;
+    margin-right: auto;
+    // background-color: red;
+    .tittle-create{
+      font-size: 20px;
+      font-weight: bold;
+    }
+  }
+
+  .text-photo-wrapper{
+    display: flex;
+    flex-direction: row;
+    // background-color: yellow;
+  }
+  .buttons-wrapper{
+    display: flex;
+    flex-direction: row;
+  }
+}

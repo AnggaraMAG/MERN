@@ -2,9 +2,9 @@ import React from 'react'
 import { RegisterBG1 } from '../../../assets'
 import "./blogitem.scss"
 
-const BlogItem = () => {
+const BlogItem = ({ ...rest }) => {
   return (
-    <div className="blog-item">
+    <div className="blog-item" {...rest}>
       <img className="blog-image" src={RegisterBG1} alt="post" />
       <div className="content-detail-wrapper">
         <p className="blog-title">Title Blog</p>

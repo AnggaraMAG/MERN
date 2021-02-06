@@ -14,13 +14,9 @@ function Home() {
       </div>
       <Gap height={25} />
       <div className="content-wrapper">
-        <BlogItem />
-        <BlogItem />
-        <BlogItem />
-        <BlogItem />
-        <BlogItem />
-        <BlogItem />
-        <BlogItem />
+        <BlogItem onClick={() => history.push('/detail-blog')} />
+        <BlogItem onClick={() => history.push('/detail-blog')} />
+        <BlogItem onClick={() => history.push('/detail-blog')} />
       </div>
       <div className="home-pagination">
         <Button label="Previous" background={BLUE} width="100%" />
