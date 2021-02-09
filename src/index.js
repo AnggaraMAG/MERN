@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './pages/App';
+import 'sweetalert2/src/sweetalert2.scss'
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
