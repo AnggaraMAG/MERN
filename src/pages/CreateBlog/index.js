@@ -13,7 +13,7 @@ function CreateBlog() {
       <Input label="Title" />
       <Gap height={55} />
       <div className="text-photo-wrapper">
-        <TextArea width="100%" height="300px" />
+        <TextArea width="100%" rows={13} />
         <Gap width={50} />
         <Upload />
       </div>

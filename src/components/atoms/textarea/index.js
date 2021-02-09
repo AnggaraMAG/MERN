@@ -1,9 +1,16 @@
 import React from 'react'
-import TextareaAutosize from '@material-ui/core/TextareaAutosize';
+import TextField from '@material-ui/core/TextField';
+import { makeStyles } from '@material-ui/core/styles';
 
-const TextArea = ({ width, height }) => {
+const useStyles = makeStyles((theme) => ({
+  TextArea: {
+    height: 200
+  },
+}));
+
+const TextArea = ({ width, rows }) => {
   return (
-    <TextareaAutosize style={{ width, height }} aria-label="minimum height" rowsMin={5} placeholder="content..." />
+    <TextField rows={rows} multiline={true} style={{ width }} id="outlined-basic" label="Content" variant="outlined" />
   )
 }
 
