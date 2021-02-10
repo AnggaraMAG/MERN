@@ -21,12 +21,22 @@ function CreateBlog() {
       if (result.isConfirmed) {
         // console.log(`result sweetalert:`, result)
         Swal.fire(
-          'Save',
-          'Data was successfully saved',
-          'success'
+          {
+            icon: 'success',
+            title: 'Save',
+            text: 'Data was successfully saved',
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'Yes!',
+            timer: 1500
+            // 'success',
+
+          }
         )
       }
     })
+    setTimeout(() => {
+      history.push('/')
+    }, 3000);
   }
 
   return (
