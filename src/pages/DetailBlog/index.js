@@ -5,7 +5,9 @@ import { RegisterBG } from '../../assets';
 import { makeStyles } from '@material-ui/core/styles';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-import { Gap } from '../../components';
+import { Button, Gap } from '../../components';
+import { useHistory } from "react-router-dom"
+import { BLUE } from '../../utils/colors/constansColor'
 import "./detailblog.scss"
 
 const useStyles = makeStyles({
@@ -18,6 +20,7 @@ const useStyles = makeStyles({
 });
 
 const DetailBlog = () => {
+  const history = useHistory();
   const classes = useStyles();
   return (
     <Paper className="detail-wrappers">
@@ -41,6 +44,9 @@ const DetailBlog = () => {
           Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
           across all continents except Antarctica
           </Typography>
+        <div className="button-wrapper">
+          <Button background={BLUE} label="Back" onClick={() => history.push("/")} />
+        </div>
       </CardContent>
     </Paper>
   )

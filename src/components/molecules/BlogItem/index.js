@@ -13,7 +13,9 @@ import { red } from '@material-ui/core/colors';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import moment from 'moment'
 import "./blogitem.scss"
+import 'moment/locale/id'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -38,11 +40,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const BlogItem = ({ ...rest }) => {
+const BlogItem = (props) => {
   const classes = useStyles();
+  const { author, content, createdAt, image } = props;
+  console.log(`imageeee`, image)
   return (
     <Card className="blog-item" >
-      <div {...rest}>
+      <div>
         <CardHeader
           avatar={
             <Avatar aria-label="recipe" className={classes.avatar}> R</Avatar>
@@ -52,19 +56,18 @@ const BlogItem = ({ ...rest }) => {
               <MoreVertIcon />
             </IconButton>
           }
-          title="Alexander Juned"
-          subheader={"September ,13 2021"}
+          title={author}
+          subheader={moment(createdAt).fromNow()}
         />
         <CardMedia
           className="blog-image"
-          image={RegisterBG1}
+          image={image}
           title="Paella dish"
         />
         <CardContent className="blog-content">
           <Typography variant="body2" color="textSecondary" component="p" >
-            This impressive paella is a perfect party dish and a fun meal to cook together with your
-            guests. Add 1 cup of frozen peas along with the mussels, if you like.
-        </Typography>
+            {content}
+          </Typography>
         </CardContent>
       </div>
       <CardActions disableSpacing>
@@ -76,14 +79,6 @@ const BlogItem = ({ ...rest }) => {
         </IconButton>
       </CardActions>
     </Card>
-    // <div className="blog-item" {...rest}>
-    //   <img className="blog-image" src={RegisterBG1} alt="post" />
-    //   <div className="content-detail-wrapper">
-    //     <p className="blog-title">Title Blog</p>
-    //     <p className="blog-autor-date">Author - Date post</p>
-    //     <p className="blog-content">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. .</p>
-    //   </div>
-    // </div>
   )
 }
 
