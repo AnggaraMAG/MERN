@@ -1,22 +1,21 @@
-// import axios from 'axios'
-import { UPDATE_DATA_BLOG, API } from '../constans'
+import { UPDATE_DATA_BLOG, API, UPDATE_PAGE } from '../constans'
 
-export const setBlogs = (page, perPage) => (dispatch) => {
+export const setBlogs = (page) => (dispatch) => {
 
-  API.get(`/blogs?page=${page}&perPage=${perPage}`)
+  API.get(`/blogs?page=${page}&perPage=2`)
     .then((res) => {
       const API = res.data
+      // console.log(`APIII`, API)
       dispatch({ type: `${UPDATE_DATA_BLOG}`, payload: API.data })
+      dispatch({
+        type: `${UPDATE_PAGE}`,
+        payload: {
+          currentPage: API.current_page,
+          totalPage: Math.ceil(API.total_records / API.rows_perPage)
+        }
+      })
     })
     .catch((err) => {
       console.log(`err:`, err)
     })
-  // axios.get('http://localhost:4000/v1/blogs')
-  //   .then((res) => {
-  //     const API = res.data
-  //     dispatch({ type: `${UPDATE_DATA_BLOG}`, payload: API.data })
-  //   })
-  //   .catch((err) => {
-  //     console.log(`err:`, err)
-  //   })
 }

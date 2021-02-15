@@ -2,10 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { BlogItem, Button, Gap } from '../../components'
 import { BLUE } from '../../utils/colors/constansColor'
 import { useHistory } from "react-router-dom"
-import axios from 'axios'
 import "./home.scss"
 import { useDispatch, useSelector } from 'react-redux'
-import { UPDATE_DATA_BLOG } from '../../config/Redux/constans'
 import { setBlogs } from '../../config/Redux/actions/actionsBlog'
 
 const URI = 'http://localhost:4000/'
@@ -14,15 +12,23 @@ const URI = 'http://localhost:4000/'
 
 const Home = () => {
   const history = useHistory()
-  // const [data, setData] = useState([])
-
-  const { data, name } = useSelector(state => state.addBlog)
-  const stateglobal = useSelector(state => state)
+  const [counter, setCounter] = useState(1)
+  const { data, name, page } = useSelector(state => state.addBlog)
   const dispatch = useDispatch()
-  console.log(`stateglobal`, stateglobal)
+
+  // console.log(`page :`, page)
+
   useEffect(() => {
-    dispatch(setBlogs(2, 2))
-  }, [dispatch])
+    dispatch(setBlogs(counter))
+  }, [counter, dispatch])
+
+  const next = () => {
+    setCounter(counter === page.totalPage ? page.totalPage : counter + 1)
+  }
+
+  const previous = () => {
+    setCounter(counter <= 1 ? 1 : counter - 1)
+  }
   return (
     <div className="home-wrapper">
       <Gap height={15} />
@@ -43,9 +49,11 @@ const Home = () => {
         })}
       </div>
       <div className="home-pagination">
-        <Button label="Previous" background={BLUE} width="100%" />
-        <Gap width={20} />
-        <Button label="Next" background={BLUE} width="100%" height={30} />
+        <Button label="Previous" background={BLUE} width="100%" onClick={previous} height={30} />
+        <Gap width={70} />
+        <p style={{ height: 30, marginTop: 4, fontWeight: 'bold' }}>{page.currentPage}/{page.totalPage}</p>
+        <Gap width={70} />
+        <Button label="Next" background={BLUE} width="100%" height={30} onClick={next} />
       </div>
     </div>
   )

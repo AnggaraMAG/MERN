@@ -5,7 +5,7 @@ const initialState = {
 }
 
 const addBlog = (state = initialState, action) => {
-  console.log(`testBlog`, action)
+  // console.log(`testBlog`, action)
   switch (action.type) {
     //   case `${UPDATE_NAME}`:
     //     return {
