@@ -4,21 +4,25 @@ import { BLUE } from '../../utils/colors/constansColor'
 import { useHistory } from "react-router-dom"
 import axios from 'axios'
 import "./home.scss"
+import { useDispatch, useSelector } from 'react-redux'
+import { UPDATE_DATA_BLOG } from '../../config/Redux/constans'
+import { setBlogs } from '../../config/Redux/actions/actionsBlog'
 
-function Home() {
+const URI = 'http://localhost:4000/'
+
+
+
+const Home = () => {
   const history = useHistory()
-  const [data, setData] = useState([])
-  const URI = 'http://localhost:4000/'
+  // const [data, setData] = useState([])
+
+  const { data, name } = useSelector(state => state.addBlog)
+  const stateglobal = useSelector(state => state)
+  const dispatch = useDispatch()
+  console.log(`stateglobal`, stateglobal)
   useEffect(() => {
-    axios.get('http://localhost:4000/v1/blogs')
-      .then((res) => {
-        const API = res.data
-        setData(API.data)
-      })
-      .catch((err) => {
-        console.log(`err:`, err)
-      })
-  }, [])
+    dispatch(setBlogs(2, 2))
+  }, [dispatch])
   return (
     <div className="home-wrapper">
       <Gap height={15} />
@@ -26,9 +30,9 @@ function Home() {
         <Button label="Add content" background={BLUE} height={30} borderRadius={3} onClick={() => history.push("/create-blog")} />
       </div>
       <Gap height={25} />
+      <h1>{name}</h1>
       <div className="content-wrapper">
         {data.map((n) => {
-          console.log(`dataaa:`, n)
           return < BlogItem
             key={n._id}
             image={`${URI}${n.image}`}

@@ -1,11 +1,14 @@
-// import logo from '../assets/icons/logo.svg';
+import { Provider } from 'react-redux';
 import { Routes } from '../config';
+import store from '../config/Redux/store'
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <Routes />
+      <Provider store={store}>
+        <Routes />
+      </Provider>
     </div>
   );
 }

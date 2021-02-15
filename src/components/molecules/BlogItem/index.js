@@ -1,5 +1,4 @@
 import React from 'react'
-import { RegisterBG1 } from '../../../assets'
 import Card from '@material-ui/core/Card';
 import { makeStyles } from '@material-ui/core/styles';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -43,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
 const BlogItem = (props) => {
   const classes = useStyles();
   const { author, content, createdAt, image } = props;
-  console.log(`imageeee`, image)
+  // console.log(`imageeee`, image)
   return (
     <Card className="blog-item" >
       <div>

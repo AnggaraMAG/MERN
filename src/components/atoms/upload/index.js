@@ -31,7 +31,7 @@ const Upload = () => {
   return (
     <div className="upload-wrapper" >
       <Paper elevation={3} className={classes.imgUpload}>
-        <img className={classes.imgUpload} src={LoginBG} /><br alt={LoginBG} />
+        <img className={classes.imgUpload} src={LoginBG} /><br alt="img" />
       </Paper>
       <div className="input-wrapper">
         <input
