@@ -13,7 +13,7 @@ const Register = () => {
   const history = useHistory()
   const [showPassword, setShowPassword] = useState(false);
   const password = useRef({});
-  console.log(`password`, password)
+  // console.log(`password`, password)
   const { handleSubmit, errors: fieldsErrors, watch, register } = useForm({
     mode: 'onSubmit',
     defaultValues: {
@@ -23,17 +23,17 @@ const Register = () => {
       confirmPassword: "",
     }
   });
-  console.log(`password`, watch('password'))
-  console.log(`fieldsErrors`, fieldsErrors)
+  // console.log(`password`, watch('password'))
+  // console.log(`fieldsErrors`, fieldsErrors)
   const handleClickShowPassword = () => setShowPassword(!showPassword);
   const handleMouseDownPassword = () => setShowPassword(!showPassword);
   const onSubmit = (data) => {
-    console.log(`data`, data)
+    // console.log(`data`, data)
     if (data !== null) {
-      console.log(`data succes`, data)
+      // console.log(`data succes`, data)
       // history.push('/')
     } else {
-      console.log(`failed`, data)
+      // console.log(`failed`, data)
     }
   };
   return (

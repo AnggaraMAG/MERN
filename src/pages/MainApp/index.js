@@ -4,6 +4,7 @@ import { Footer, Header } from '../../components'
 import CreateBlog from '../CreateBlog'
 import DetailBlog from '../DetailBlog'
 import Home from '../Home'
+import ArrayValidation from '../tesArrayValidation'
 import "./mainapp.scss"
 
 function MainApp() {
@@ -15,6 +16,9 @@ function MainApp() {
       <div className="content-wrapper">
         <Router>
           <Switch>
+            <Route path="/array">
+              <ArrayValidation />
+            </Route>
             <Route path="/create-blog">
               <CreateBlog />
             </Route>
