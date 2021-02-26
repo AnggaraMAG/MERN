@@ -1,4 +1,4 @@
-import { UPDATE_PAGE, UPDATE_DATA_BLOG } from '../constans'
+import { UPDATE_PAGE, GET_ALL_BLOGS } from '../constans'
 const initialState = {
   data: [],
   page: {
@@ -7,10 +7,10 @@ const initialState = {
   }
 }
 
-const addBlog = (state = initialState, action) => {
-  // console.log(`addblog`, action)
+const getBlog = (state = initialState, action) => {
+  // console.log(`getBlog`, action)
   switch (action.type) {
-    case `${UPDATE_DATA_BLOG}`:
+    case `${GET_ALL_BLOGS}`:
       return {
         ...state,
         data: action.payload
@@ -25,4 +25,4 @@ const addBlog = (state = initialState, action) => {
   }
 }
 
-export default addBlog;
+export default getBlog;

@@ -1,61 +1,60 @@
-import React, { useState } from 'react'
-import { Button, Gap, Input, TextArea, Upload } from '../../components'
-import { BLUE, RED } from '../../utils/colors/constansColor'
+import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
-import Swal from 'sweetalert2/dist/sweetalert2.js'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import { Button, Gap, Input, TextArea, Upload } from '../../components'
+import { sendFormtoAPI, setForm, setImagePreview } from '../../config/Redux/actions/createBlogAction'
+import { BLUE, RED } from '../../utils/colors/constansColor'
 import './createblog.scss'
-function CreateBlog() {
+
+
+
+const URI = 'http://localhost:4000/v1/blog'
+
+const CreateBlog = () => {
   const history = useHistory()
+  const { form, imagePreview } = useSelector(state => state.createBlog)
+  console.log(`form:`, form)
+  const { title, image, content } = form
+  const dispatch = useDispatch()
 
-  const Sweet = () => {
-    Swal.fire({
-      title: 'Are you sure?',
-      text: "You want to save!",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes!',
-      reverseButtons: true
-    }).then((result) => {
-      if (result.isConfirmed) {
-        // console.log(`result sweetalert:`, result)
-        Swal.fire(
-          {
-            icon: 'success',
-            title: 'Save',
-            text: 'Data was successfully saved',
-            confirmButtonColor: '#3085d6',
-            confirmButtonText: 'Yes!',
-            timer: 1500
-            // 'success',
+  const _onSubmit = async () => {
+    sendFormtoAPI(form)
+  }
 
-          }
-        )
-      }
-    })
-    setTimeout(() => {
-      history.push('/')
-    }, 3000);
+  const onImageUpload = (e) => {
+    const file = e.target.files[0]
+    dispatch(setForm('image', file))
+    dispatch(setImagePreview(URL.createObjectURL(file)))
+
+  }
+
+  const handleClose = () => {
+    // setForm(`title`, "")
+    dispatch({ type: "reset" })
+    history.push('/')
   }
 
   return (
     <div className="blog-wrapper">
       <div className="title-create-wrapper">
+        <ToastContainer />
         <p className="tittle-create">Created Blog</p>
       </div>
-      <Input label="Title" />
+      <Input label="Title" value={title} onChange={(e) => dispatch(setForm('title', e.target.value))} />
       <Gap height={55} />
       <div className="text-photo-wrapper">
-        <TextArea width="100%" rows={13} />
+        <TextArea width="100%" rows={13} value={content} onChange={(e) => dispatch(setForm('content', e.target.value))} />
         <Gap width={50} />
-        <Upload />
+        <Upload name={image} img={imagePreview} onChange={(e) => onImageUpload(e)} />
       </div>
       <Gap height={50} />
       <div className="buttons-wrapper">
-        <Button label="Cancel" background={RED} height={35} width="100%" onClick={() => history.push('/')} />
+        <Button label="Cancel" background={RED} height={35} width="100%" onClick={
+          handleClose} />
         <Gap width={50} />
-        <Button label="Save" background={BLUE} height={35} width="100%" onClick={() => Sweet()}
+        <Button label="Save" background={BLUE} height={35} width="100%" onClick={_onSubmit}
         />
       </div>
     </div >

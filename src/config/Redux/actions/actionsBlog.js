@@ -1,21 +1,20 @@
-import { UPDATE_DATA_BLOG, API, UPDATE_PAGE } from '../constans'
+import { GET_ALL_BLOGS, UPDATE_PAGE } from '../constans'
+import { GET_DATA } from '../../API'
 
-export const setBlogs = (page) => (dispatch) => {
+export const setBlogs = (page) => async (dispatch) => {
 
-  API.get(`/blogs?page=${page}&perPage=2`)
-    .then((res) => {
-      const API = res.data
-      // console.log(`APIII`, API)
-      dispatch({ type: `${UPDATE_DATA_BLOG}`, payload: API.data })
-      dispatch({
-        type: `${UPDATE_PAGE}`,
-        payload: {
-          currentPage: API.current_page,
-          totalPage: Math.ceil(API.total_records / API.rows_perPage)
-        }
-      })
+  const result = await GET_DATA("blogs", page);
+  if (result.status === 200) {
+    const data = result.data
+    dispatch({ type: `${GET_ALL_BLOGS}`, payload: data.data })
+    dispatch({
+      type: `${UPDATE_PAGE}`,
+      payload: {
+        currentPage: data.current_page,
+        totalPage: Math.ceil(data.total_records / data.rows_perPage)
+      }
     })
-    .catch((err) => {
-      console.log(`err:`, err)
-    })
+  } else {
+    console.log(`error`, result.data)
+  }
 }
