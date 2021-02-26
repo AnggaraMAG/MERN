@@ -26,12 +26,13 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const Upload = () => {
+const Upload = ({ name, img, ...rest }) => {
+  // console.log(`name:`, name)
   const classes = useStyles();
   return (
     <div className="upload-wrapper" >
       <Paper elevation={3} className={classes.imgUpload}>
-        <img className={classes.imgUpload} src={LoginBG} /><br alt="img" />
+        <img className={classes.imgUpload} src={img ? img : LoginBG} /><br alt="img" />
       </Paper>
       <div className="input-wrapper">
         <input
@@ -40,10 +41,11 @@ const Upload = () => {
           id="contained-button-file"
           multiple
           type="file"
+          {...rest}
         />
-        <p>XXXXXXXXXXXX.png</p>
+        <p>{name ? name.name : "No Photo"}</p>
         <label htmlFor="contained-button-file">
-          <Button className="button-upload" variant="contained" component="span">
+          <Button className="button-upload" variant="contained" component="span" >
             Upload Image
         </Button>
         </label>

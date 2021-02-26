@@ -3,9 +3,9 @@ import TextField from '@material-ui/core/TextField';
 
 
 
-const TextArea = ({ width, rows }) => {
+const TextArea = ({ width, rows, ...rest }) => {
   return (
-    <TextField rows={rows} multiline={true} style={{ width }} id="outlined-basic" label="Content" variant="outlined" />
+    <TextField rows={rows} multiline={true} style={{ width }} id="outlined-basic" label="Content" variant="outlined" {...rest} />
   )
 }
 

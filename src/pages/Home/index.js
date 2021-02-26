@@ -13,7 +13,7 @@ const URI = 'http://localhost:4000/'
 const Home = () => {
   const history = useHistory()
   const [counter, setCounter] = useState(1)
-  const { data, name, page } = useSelector(state => state.addBlog)
+  const { data, name, page } = useSelector(state => state.getBlog)
   const dispatch = useDispatch()
 
   // console.log(`page :`, page)
